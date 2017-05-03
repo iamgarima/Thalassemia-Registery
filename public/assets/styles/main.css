@@ -9,7 +9,11 @@ body {
 
 .data-container {
   margin-left: 15vw;
-  margin-top: 20vh;
+  margin-top: -115px;
+}
+
+.data-container li {
+  font-weight: 400;
 }
 
 .field-row {
@@ -31,13 +35,10 @@ body {
 }
 
 .content-row ul {
-  margin-top: 0;
-  margin-bottom: 25px;
-}
-
-.content-row ul {
   height: 60px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .content-row li {
@@ -55,6 +56,8 @@ body {
 }
 
 .header-col {
+  height: 100px!important;
+  width: 80%!important;
   margin-top: 2vw!important;
   margin-left: 18vw!important;
   color: white; 
@@ -86,6 +89,7 @@ body {
 .sub-heading p {
   font-size: 20px;
   font-weight: 300;
+  margin-top: 0!important;
 }
 
 
