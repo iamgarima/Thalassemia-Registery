@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 import Routes from './routes';
+import reducer from './reducers';
 
 const Index = () => {
+  const store = createStore(reducer, applyMiddleware(ReduxThunk))
   return (
-    <Routes />
+    <Provider store={store}>
+      <Routes />
+    </Provider>  
   )
 }
 
