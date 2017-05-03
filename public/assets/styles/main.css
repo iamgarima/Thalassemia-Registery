@@ -12,13 +12,13 @@ body {
   margin-top: 20vh;
 }
 
-.header-row {
+.field-row {
   display: inline;
   color: white;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
-.header-row li {
+.field-row li {
   height: 60px;
   padding-top: 20px!important;
   background-color: #000099; 
@@ -83,7 +83,7 @@ body {
   padding: 0!important;  
 }
 
-.line p {
+.sub-heading p {
   font-size: 20px;
   font-weight: 300;
 }

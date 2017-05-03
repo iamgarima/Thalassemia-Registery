@@ -15,7 +15,7 @@ class Header extends Component {
               <span className="add-text">ADD</span>
               <span className="patient-text"> Patient</span>
             </div>
-            <div className="col s12 line">
+            <div className="col s12 sub-heading">
               <p>You can add patients sufferring from thalassemia to provide them easy access of blood.</p>
             </div>
           </div>

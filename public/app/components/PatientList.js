@@ -29,7 +29,7 @@ class PatientList extends Component {
     return (
       <div className="row data-container">
         <div className="col s10">
-          <div className="row header-row">
+          <div className="row field-row">
             <ul>
               <li className="col s1"></li>
               <li className="col s5">Name</li>
