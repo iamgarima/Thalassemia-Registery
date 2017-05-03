@@ -1,13 +1,23 @@
 import React from 'react';
 import {
 	Router,
-	Route
+	Route,
+  IndexRedirect,
+  browserHistory
 } from 'react-router';
-import App from '../components/App'
+import App from '../components/App';
+import PatientList from '../components/PatientList';
 
 
 const Routes = () => {
 	return (
-		<Route path="/" component={App}/>
-		)
+    <Router history={browserHistory}> 
+		  <Route path="/" component={App}>
+        <IndexRedirect to="/patients" />
+        <Route path="patients" component={PatientList} />
+      </Route>
+    </Router>
+	)
 }
+
+export default Routes;
