@@ -48,6 +48,48 @@ body {
 }
 
 
+.header-row {
+  height: 20vw;
+  display: block;
+  background-color: #000099;
+}
+
+.header-col {
+  margin-top: 2vw!important;
+  margin-left: 18vw!important;
+  color: white; 
+}
+
+.header-col i {
+  border: 5px solid #0000e5;
+  border-radius: 50%;
+  font-size: 45px;
+  color: #0000e5;
+  margin-top: 15px;
+}
+
+.add-text {
+  font-size: 52px;
+  font-weight: bolder;
+}
+
+.patient-text {
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.text-container {
+  margin-top: 10px;
+  padding: 0!important;  
+}
+
+.line p {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+
 
 
 
