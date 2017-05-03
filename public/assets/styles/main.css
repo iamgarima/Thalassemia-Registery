@@ -67,16 +67,18 @@ body {
   border: 5px solid #0000e5;
   border-radius: 50%;
   font-size: 45px;
-  color: #0000e5;
+  color: #0000ff;
   margin-top: 15px;
 }
 
 .add-text {
+  color: white;
   font-size: 52px;
   font-weight: bolder;
 }
 
 .patient-text {
+  color: white;
   font-size: 35px;
   font-weight: 400;
 }
