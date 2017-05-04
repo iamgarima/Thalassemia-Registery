@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPatients } from '../actions/patients';
+import Header from './Header';
 import 'materialize-css/bin/materialize.css';
 import '../../assets/styles/main.css';
 
@@ -27,19 +28,24 @@ class PatientList extends Component {
 
   render() {
     return (
-      <div className="row data-container">
-        <div className="col s10">
-          <div className="row field-row">
-            <ul>
-              <li className="col s1"></li>
-              <li className="col s5">Name</li>
-              <li className="col s4">D.O.B</li>
-              <li className="col s2">Type</li>
-            </ul>
+      <div className="row">
+        <div className="col s12">
+          <Header />
+          <div className="row data-container">
+            <div className="col s10">
+              <div className="row field-row">
+                <ul>
+                  <li className="col s1"></li>
+                  <li className="col s5">Name</li>
+                  <li className="col s4">D.O.B</li>
+                  <li className="col s2">Type</li>
+                </ul>
+              </div>  
+              { this.renderPatients() }    
+            </div>
           </div>  
-          { this.renderPatients() }    
         </div>
-      </div>  
+      </div>    
     )
   }
 }
