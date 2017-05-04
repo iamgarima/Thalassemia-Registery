@@ -94,6 +94,15 @@ body {
   margin-top: 0!important;
 }
 
+.addpatient-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+form div.row {
+  margin-left: 25vw;
+}
+
 
 
 
