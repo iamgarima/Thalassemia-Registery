@@ -103,6 +103,27 @@ form div.row {
   margin-left: 25vw;
 }
 
+.addpatient-container button {
+  background-color: #000099;
+  color: white;
+}
+
+.btn:hover {
+    background-color: #000099!important;
+}
+
+.addpatient-container h2 {
+  color: #000099!important;
+}
+
+.addpatient-container input:focus {
+  border-bottom: 1px solid #000099!important;
+  box-shadow: 0 1px 0 0 #000099!important;
+}
+
+.addpatient-container label {
+  color: #000099!important;
+}
 
 
 
