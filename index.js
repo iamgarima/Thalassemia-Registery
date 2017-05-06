@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const _ = require('lodash');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 const router = require('./dist/routes');
 
 const app = express();
@@ -8,6 +11,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'/public/index.html'));
@@ -20,4 +24,3 @@ require('./dist/db/database').initDatabaseWithName('thalassemia_registery', () =
 	  console.log('Server listening at port 8000!');
 	});
 });
-
