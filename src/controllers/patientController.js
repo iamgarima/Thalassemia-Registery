@@ -1,4 +1,14 @@
+import passport from 'passport';
+import passportJWT from 'passport-jwt';
 import { Patient, insert, getAll } from '../models/Patient';
+import { checkUser } from '../models/User';
+
+const jwtOptions = {}
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.secretOrKey = 'somethingsomewhere';
 
 exports.addPatient = (req, res) => {
 	let patientDetails = new Patient(req.body);
@@ -8,10 +18,28 @@ exports.addPatient = (req, res) => {
 	})
 }
 
-exports.getPatients = (req, res) => {
-	let patientDetails = new Patient(req.body);
-	getAll((patients) => {
-		if (patients) res.send(patients)
-		else res.status(500).send('ERROR')
-	})
+exports.getPatients = (req, res, next) => {
+	passport.authenticate('jwt', { session: false, failureRedirect: '/login' }, (val, user, jwt_payload) => {
+    if(user.emailId === jwt_payload.emailId) {
+      getAll(user.emailId, (patients) => {
+        if (patients) res.send(patients)
+        else res.status(500).send('ERROR')
+      })
+    } else {
+      res.redirect('/login');
+    }
+	})(req, res, next);
 }
+
+const strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+  console.log('payload received', jwt_payload);
+  checkUser(jwt_payload, (user) => {
+    if (user) {
+      next(null, user, jwt_payload);
+    } else {
+      next(null, false);
+    }
+  })
+});
+
+passport.use(strategy);
