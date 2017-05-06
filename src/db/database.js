@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 import { createDatabaseWithName } from './create_database';
 import Patient from './schemas/Patient';
+import User from './schemas/User';
 
 export const tables = {};
 export const initDatabaseWithName = (name, cb = () => {}) => {
@@ -12,6 +13,7 @@ export const initDatabaseWithName = (name, cb = () => {}) => {
 			  .then(() => {
 			  	console.log('Connection has been established successfully.');
 				  tables.Patient = Patient(sequelize);
+				  tables.User = User(sequelize);
 			  	cb();
 			  })
 			  .catch(err => {
