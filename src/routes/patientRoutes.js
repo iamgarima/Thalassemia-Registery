@@ -1,4 +1,4 @@
-import patients from '../controllers/patientController'
+import patients from '../controllers/patientController';
 
 const patientRoutes = router => {
 	router
@@ -8,4 +8,3 @@ const patientRoutes = router => {
 }
 
 export default patientRoutes;
-
