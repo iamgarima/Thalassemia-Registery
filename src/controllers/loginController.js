@@ -14,7 +14,7 @@ exports.validUserCheck = (req, res) => {
   let user = new User(req.body);
   checkUser(user, (user) => {
     if(user) {
-      if(user.emailId === req.body.emailId && user.password === req.body.password) {
+      if(user.password === req.body.password) {
         const payload = {emailId: user.emailId};
         const token = jwt.sign(payload, jwtOptions.secretOrKey);
         getAll(user.emailId, (patients) => {
@@ -28,7 +28,9 @@ exports.validUserCheck = (req, res) => {
           }
           else res.status(500).send('ERROR')
         })
-      } 
+      } else {
+        res.status(401).json({message: "Wrong Password"});
+      }
     } else {
       res.status(401).json({message: "Input did not match"});
     }
