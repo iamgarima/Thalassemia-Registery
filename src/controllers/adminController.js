@@ -15,6 +15,7 @@ exports.addUser = (req, res, next) => {
     if(user) {
       if(user.isAdmin === true) {
         const userDetails = new User(req.body);
+        userDetails.hospital = user.hospital;
         insert(userDetails, (user) => {
           if(user) res.send(user)
           else res.status(500).send('ERROR')  
