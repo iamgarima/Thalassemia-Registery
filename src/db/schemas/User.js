@@ -5,6 +5,12 @@ export default (sequelize) => {
     emailId: {
       type: Sequelize.STRING
     },
+    hospital: {
+      type: Sequelize.STRING
+    },
+    isAdmin: {
+      type: Sequelize.BOOLEAN
+    },
     password: {
       type: Sequelize.STRING
     }

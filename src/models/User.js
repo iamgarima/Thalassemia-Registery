@@ -2,6 +2,8 @@ import { tables } from '../db/database';
 
 function User(userDetails) {
   this.emailId = userDetails.emailId;
+  this.hospital = userDetails.hospital;
+  this.isAdmin = userDetails.isAdmin;
   this.password = userDetails.password;
 }
 
@@ -41,6 +43,15 @@ const setPassword = (user, cb) => {
     .then((users) => {
       cb(users)
     }))
+}
+
+const setHospital = (adminEmailId, hospitalId, cb) => {
+  tables.User
+    .sync({force: false})
+    .then(() => tables.User.update({ hospital: hospitalId }, { fields: ['hospital'], where: { emailId: adminEmailId } })
+    .then((users) => {
+      cb()
+    }))
 }       
 
 module.exports = {
@@ -48,5 +59,6 @@ module.exports = {
   insert,
   getAll,
   checkUser,
-  setPassword
+  setPassword,
+  setHospital
 }
