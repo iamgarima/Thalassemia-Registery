@@ -13,19 +13,22 @@ jwtOptions.secretOrKey = config.secretOrKey;
 exports.validUserCheck = (req, res) => {
   let user = new User(req.body);
   checkUser(user, (user) => {
-    if(user.emailId === req.body.emailId && user.password === req.body.password) {
-      const payload = {emailId: user.emailId};
-      const token = jwt.sign(payload, jwtOptions.secretOrKey);
-      getAll(user.emailId, (patients) => {
-        if (patients) {
-          const userPatients = {
-            userToken: token,
-            patients: patients
-          };
-          res.send(userPatients);
-        }
-        else res.status(500).send('ERROR')
-      })
+    if(user) {
+      if(user.emailId === req.body.emailId && user.password === req.body.password) {
+        const payload = {emailId: user.emailId};
+        const token = jwt.sign(payload, jwtOptions.secretOrKey);
+        getAll(user.emailId, (patients) => {
+          if (patients) {
+            const userPatients = {
+              userToken: token,
+              isAdmin: user.isAdmin,
+              patients: patients
+            };
+            res.send(userPatients);
+          }
+          else res.status(500).send('ERROR')
+        })
+      } 
     } else {
       res.status(401).json({message: "Input did not match"});
     }
