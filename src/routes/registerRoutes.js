@@ -2,7 +2,7 @@ import register from '../controllers/registerController';
 
 const registerRoutes = router => {
   router
-    .route('/register')
+    .route('/register/admin')
     .post(register.addAdmin)
 }
 
