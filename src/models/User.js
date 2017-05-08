@@ -32,11 +32,21 @@ const checkUser = (user, cb) => {
       if(users[0]) cb(users[0].dataValues)
       else cb(users[0])
     }))
-} 
+}
+
+const setPassword = (user, cb) => {
+  tables.User
+    .sync({force: false})
+    .then(() => tables.User.update({ password: user.password }, { fields: ['password'], where: { emailId: user.emailId } })
+    .then((users) => {
+      cb(users)
+    }))
+}       
 
 module.exports = {
   User,
   insert,
   getAll,
-  checkUser
+  checkUser,
+  setPassword
 }
