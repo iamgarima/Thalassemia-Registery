@@ -29,7 +29,8 @@ const checkUser = (user, cb) => {
         emailId: user.emailId 
       }
     }).then((users) => {
-      cb(users[0].dataValues);
+      if(users[0]) cb(users[0].dataValues)
+      else cb(users[0])
     }))
 } 
 
