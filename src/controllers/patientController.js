@@ -11,12 +11,19 @@ const JwtStrategy = passportJWT.Strategy;
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
 jwtOptions.secretOrKey = config.secretOrKey;
 
-exports.addPatient = (req, res) => {
-	let patientDetails = new Patient(req.body);
-	insert(patientDetails, (patient) => {
-		if (patient) res.send(patient)
-		else res.status(500).send('ERROR')	
-	})
+exports.addPatient = (req, res, next) => {
+  passport.authenticate('jwt', { session: false }, (val, user, jwt_payload) => {
+    if(user) {
+    	let patientDetails = new Patient(req.body);
+      patientDetails.userEmailId = user.emailId;
+    	insert(patientDetails, (patient) => {
+    		if (patient) res.send(patient)
+    		else res.status(500).send('ERROR')	
+    	})
+    } else {
+      res.send('Something went wrong :(');
+    }
+  })(req, res, next);  
 }
 
 exports.getPatients = (req, res, next) => {
