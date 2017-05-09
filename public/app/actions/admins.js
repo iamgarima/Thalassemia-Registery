@@ -13,7 +13,7 @@ export const addAdmin = (admin) => {
         dispatch({
           type: ADMIN_ADDED,
           payload: {
-            admins: res.data
+            admin: res.data
           }
         })
         browserHistory.push(`/hospital`);
