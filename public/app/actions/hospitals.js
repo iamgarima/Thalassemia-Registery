@@ -13,7 +13,7 @@ export const addHospital = (hospital) => {
         dispatch({
           type: HOSPITAL_ADDED,
           payload: {
-            hospitals: res.data
+            hospital: res.data
           }
         })
         browserHistory.push(`/patients`);
