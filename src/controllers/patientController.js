@@ -3,6 +3,7 @@ import passportJWT from 'passport-jwt';
 import config from '../../config/config.json';
 import { Patient, insert, getAll } from '../models/Patient';
 import { checkUser } from '../models/User';
+import { getOne, setHospitalPatients } from '../models/Hospital';
 
 const jwtOptions = {}
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -17,7 +18,22 @@ exports.addPatient = (req, res, next) => {
     	let patientDetails = new Patient(req.body);
       patientDetails.userEmailId = user.emailId;
     	insert(patientDetails, (patient) => {
-    		if (patient) res.send(patient)
+    		if (patient) {
+          getOne(user.hospital, (hospital) => {
+            if(hospital) {
+              let patientsList = [...hospital.patientsList, patient.id]
+              setHospitalPatients(user.hospital, patientsList, (hospital) => {
+                if(hospital[0] !== 0) {
+                  res.send(patient)
+                } else {
+                  res.send('Couldn\'t update in hospital');
+                }
+              })
+            } else {
+              res.send('Hospital not found');
+            }
+          })
+        }  
     		else res.status(500).send('ERROR')	
     	})
     } else {
