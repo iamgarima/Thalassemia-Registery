@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
+import { addAdmin } from '../actions/admins';
 
 class Admin extends Component {
   handleClick() {
@@ -10,7 +11,8 @@ class Admin extends Component {
       const admin = {
         emailId: this.emailId.value,
         password: this.password.value
-      }
+      };
+      this.props.addAdmin(admin);
     } else {
       alert('Passwords don\'t match!');
     }
@@ -53,7 +55,7 @@ class Admin extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addAdmin: (admin) => {
-      dispatch()
+      dispatch(addAdmin(admin))
     }
   }
 }

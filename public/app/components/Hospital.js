@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
+import { addHospital } from '../actions/hospitals';
 
 class Hospital extends Component {
   handleClick() {
     const hospital = {
       name: this.name.value,
       location: this.location.value
-    }
+    };
+    this.props.addHospital(hospital);
   }
 
   render() {
@@ -43,7 +45,7 @@ class Hospital extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addHospital: (hospital) => {
-      dispatch()
+      dispatch(addHospital(hospital))
     }
   }
 }

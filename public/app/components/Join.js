@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
+import { setUser } from '../actions/users';
 
 class Join extends Component {
   handleClick() {
@@ -11,6 +12,7 @@ class Join extends Component {
         emailId: this.emailId.value,
         password: this.password.value
       }
+      this.props.setUser(user);
     } else {
       alert('Passwords don\'t match!');
     }
@@ -53,7 +55,7 @@ class Join extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setUser: (user) => {
-      dispatch()
+      dispatch(setUser(user))
     }
   }
 }
