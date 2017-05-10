@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
+import { loginUser } from '../actions/login';
 
 class Login extends Component {
   handleClick() {
     const user = {
       emailId: this.emailId.value,
       password: this.password.value
-    }
+    };
+    this.props.loginUser(user);
   }
 
   render() {
@@ -43,7 +45,7 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     loginUser: (user) => {
-      dispatch()
+      dispatch(loginUser(user))
     }
   }
 }
