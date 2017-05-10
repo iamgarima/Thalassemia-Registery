@@ -9,6 +9,7 @@ export const setUser = (user) => {
     axios
       .post('api/v1/join', user)
       .then(res => {
+        axios.defaults.headers.common['Authorization'] = 'JWT ' + res.data;
         browserHistory.push(`/patients`);
       })
       .catch(err => {
