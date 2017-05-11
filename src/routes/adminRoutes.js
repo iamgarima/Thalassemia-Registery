@@ -1,10 +1,10 @@
-import admin from '../controllers/adminController';
+import user from '../controllers/userController';
 
 const adminRoutes = router => {
   router
     .route('/users')
-    .post(admin.addUser)
-    .get(admin.getUsers)
+    .post(user.addUser)
+    .get(user.getUsers)
 }
 
 export default adminRoutes;
