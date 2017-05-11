@@ -30,7 +30,7 @@ const getOne = (hospitalId, cb) => {
         id: hospitalId 
       }
     }).then((hospital) => {
-      cb(hospital[0]);
+      cb(hospital[0].dataValues);
     }))
 }
 

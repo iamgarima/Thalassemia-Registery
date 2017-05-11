@@ -21,8 +21,12 @@ exports.addPatient = (req, res, next) => {
     		if (patient) {
           getOne(user.hospital, (hospital) => {
             if(hospital) {
-              let patientsList = [...hospital.patientsList, patient.id]
-              setHospitalPatients(user.hospital, patientsList, (hospital) => {
+              if (!hospital.patientsList) {
+                hospital.patientsList = [patient.id];
+              } else {
+                hospital.patientsList = [...hospital.patientsList, patient.id];
+              }  
+              setHospitalPatients(user.hospital, hospital.patientsList, (hospital) => {
                 if(hospital[0] !== 0) {
                   res.send(patient)
                 } else {
