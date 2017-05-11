@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 
 export default (sequelize) => {
   const Admin = sequelize.define('admin', {
-    emailId: {
+    adminId: {
       type: Sequelize.STRING
     },
     usersList: {

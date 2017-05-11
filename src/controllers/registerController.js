@@ -1,4 +1,5 @@
 import { User, insert, checkUser } from '../models/User';
+import { Admin, insertAdmin } from '../models/Admin';
 
 exports.addAdmin = (req, res) => {
   const userDetails = new User(req.body);
@@ -9,7 +10,8 @@ exports.addAdmin = (req, res) => {
       userDetails.isAdmin = true;
       insert(userDetails, (user) => {
         if(user) {
-          res.send(user);
+          const admin = new Admin(user.id);
+          insertAdmin(admin, () => res.send(user));
         } else {
           res.status(500).send('ERROR');
         }
