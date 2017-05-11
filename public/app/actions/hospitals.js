@@ -13,9 +13,10 @@ export const addHospital = (hospital) => {
         dispatch({
           type: HOSPITAL_ADDED,
           payload: {
-            hospital: res.data
+            hospital: res.data.hospital
           }
         })
+        axios.defaults.headers.common['Authorization'] = 'JWT ' + res.data.userToken;
         browserHistory.push(`/patients`);
       })
       .catch(err => {

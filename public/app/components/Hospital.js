@@ -8,6 +8,7 @@ import { addHospital } from '../actions/hospitals';
 class Hospital extends Component {
   handleClick() {
     const hospital = {
+      emailId: this.props.admin.emailId,
       name: this.name.value,
       location: this.location.value
     };
@@ -42,6 +43,12 @@ class Hospital extends Component {
   }
 }  
 
+const mapStateToProps = (state) => {
+  return {
+    admin: state.admins[state.admins.length -1]
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addHospital: (hospital) => {
@@ -50,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Hospital);
+export default connect(mapStateToProps, mapDispatchToProps)(Hospital);
