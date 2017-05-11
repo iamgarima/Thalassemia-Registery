@@ -2,6 +2,7 @@ import passport from 'passport';
 import passportJWT from 'passport-jwt';
 import config from '../../config/config.json';
 import { User, insert, getAll, checkUser } from '../models/User';
+import { getOne, setAdminUsers } from '../models/Admin';
 
 const jwtOptions = {}
 const ExtractJwt = passportJWT.ExtractJwt;
@@ -16,11 +17,29 @@ exports.addUser = (req, res, next) => {
       if(user.isAdmin === true) {
         const userDetails = new User(req.body);
         userDetails.hospital = user.hospital;
-        insert(userDetails, (user) => {
-          if(user) res.send(user)
-          else res.status(500).send('ERROR')  
-        })
-      }
+        insert(userDetails, (newUser) => {
+          if(newUser) {
+            getOne(user.id, (admin) => {
+              if(admin) {
+                if(!admin.usersList) {
+                  admin.usersList = [newUser.id];
+                } else {
+                  admin.usersList = [...admin.usersList, newUser.id];
+                }           
+                setAdminUsers(user.id, admin.usersList, (admin) => {
+                  if(admin[0] !== 0) {
+                    res.send(newUser)
+                  } else {
+                    res.send('Couldn\'t update in admin');
+                  }
+                })
+              } else res.send('Admin not found');  
+            })
+          } else {
+            res.status(500).send('ERROR')
+          }
+        }) 
+      }   
     } else {
       res.send('Unauthorised access');
     }
