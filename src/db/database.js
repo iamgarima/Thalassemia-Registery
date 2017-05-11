@@ -3,6 +3,7 @@ import { createDatabaseWithName } from './create_database';
 import Patient from './schemas/Patient';
 import User from './schemas/User';
 import Hospital from './schemas/Hospital';
+import Admin from './schemas/Admin';
 
 export const tables = {};
 export const initDatabaseWithName = (name, cb = () => {}) => {
@@ -16,6 +17,7 @@ export const initDatabaseWithName = (name, cb = () => {}) => {
 				  tables.Patient = Patient(sequelize);
 				  tables.User = User(sequelize);
 				  tables.Hospital = Hospital(sequelize);
+				  tables.Admin = Admin(sequelize);
 			  	cb();
 			  })
 			  .catch(err => {
