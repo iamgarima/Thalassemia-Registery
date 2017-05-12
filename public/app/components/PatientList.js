@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPatients } from '../actions/patients';
 import Header from './Header';
+import Navbar from './Navbar';
 import 'materialize-css/bin/materialize.css';
 import '../../assets/styles/main.css';
 
@@ -30,6 +31,7 @@ class PatientList extends Component {
     return (
       <div className="row">
         <div className="col s12">
+          <Navbar />
           <Header />
           <div className="row data-container">
             <div className="col s10">
