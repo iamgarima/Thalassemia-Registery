@@ -13,6 +13,8 @@ import Admin from '../components/Admin';
 import Hospital from '../components/Hospital';
 import Join from '../components/Join';
 import Login from '../components/Login';
+import UserList from '../components/UserList';
+import AddUserForm from '../components/AddUserForm';
 
 
 const Routes = () => {
@@ -27,6 +29,8 @@ const Routes = () => {
         <Route path="login" component={Login} />
         <Route path="patients" component={PatientList} />
         <Route path="addpatient" component={AddPatientForm} />
+        <Route path="users" component={UserList} />
+        <Route path="adduser" component={AddUserForm} />
       </Route>
     </Router>
 	)
