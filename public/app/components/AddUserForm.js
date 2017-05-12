@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
+import { addUser } from '../actions/users';
 
 class AddUserForm extends Component {
   handleClick() {
@@ -37,7 +38,7 @@ class AddUserForm extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addUser: (user) => {
-      //dispatch()
+      dispatch(addUser(user))
     }
   }
 }

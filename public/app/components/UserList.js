@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Navbar from './Navbar';
 import 'materialize-css/bin/materialize.css';
 import '../../assets/styles/main.css';
+import { getUsers } from '../actions/users';
 
 class UserList extends Component {
 
@@ -11,7 +12,19 @@ class UserList extends Component {
     this.props.getUsers();
   }
 
-  render() {
+  renderUsers() {
+    return this.props.users.map((user) => {
+      return (
+        <div className="row content-row">
+          <ul>
+            <li className="col s12">{user.emailId}</li>
+          </ul>  
+        </div> 
+      )
+    })
+  }
+
+  render() { 
     return (
       <div className="row">
         <div className="col s12">
@@ -35,13 +48,13 @@ class UserList extends Component {
             </div>
           </div>
           <div className="row data-container">
-            <div className="col s10">
+            <div className="col s6">
               <div className="row field-row">
                 <ul>
-                  <li className="col s1"></li>
-                  <li className="col s5">Email Id</li>
+                  <li className="col s12">Email Id</li>
                 </ul>
-              </div>    
+              </div> 
+              { this.renderUsers() }   
             </div>
           </div>  
         </div>
@@ -59,7 +72,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUsers: () => {
-      // dispatch();
+      dispatch(getUsers());
     }
   }
 }
