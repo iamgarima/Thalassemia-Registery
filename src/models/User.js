@@ -23,6 +23,18 @@ const getAll = (cb) => {
     }))
 }
 
+const getOneUser = (userId, cb) => {
+  tables.User
+    .sync({force: false})
+    .then(() => tables.User.findAll({
+      where: {
+        id: userId 
+      }
+    }).then((user) => {
+      cb(user[0].dataValues);
+    }))
+}
+
 const checkUser = (user, cb) => {
   tables.User
     .sync({force: false})
@@ -58,6 +70,7 @@ module.exports = {
   User,
   insert,
   getAll,
+  getOneUser,
   checkUser,
   setPassword,
   setHospital

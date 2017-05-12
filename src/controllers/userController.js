@@ -1,7 +1,7 @@
 import passport from 'passport';
 import passportJWT from 'passport-jwt';
 import config from '../../config/config.json';
-import { User, insert, getAll, checkUser } from '../models/User';
+import { User, insert, getAll, getOneUser, checkUser } from '../models/User';
 import { getOne, setAdminUsers } from '../models/Admin';
 
 const jwtOptions = {}
@@ -50,9 +50,26 @@ exports.getUsers = (req, res, next) => {
   passport.authenticate('jwt', { session: false, failureFlash: 'Unauthorised access' }, (val, user, jwt_payload) => {
     if(user) {
       if(user.isAdmin === true) {
-        getAll((users) => {
-          if(users) res.send(users)
-          else res.status(500).send('ERROR')
+        var myuser;
+        getOne(user.id, (admin) => {
+          if(admin) {
+            let usersList = [];
+            let adminUsersListLength = admin.usersList.length;
+            while(admin.usersList.length !== 0) {
+              getOneUser(admin.usersList.shift(), (user) => {
+                if(user) {
+                  usersList.push(user);
+                  if(usersList.length === (adminUsersListLength - admin.usersList.length)) {
+                    res.send(usersList);
+                  }                
+                } else {
+                  res.send('Couldn\'t fetch users')
+                }
+              })    
+            }
+          } else {
+            res.status(500).send('ERROR');
+          }
         })
       }
     } else {
