@@ -22,8 +22,8 @@ class AddUserForm extends Component {
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">
-              <input ref={input => this.emailId = input} type="text" className="validate" />
-              <label>Email Id</label>
+              <input ref={input => this.emailId = input} type="email" className="validate" />
+              <label data-error="Enter a valid email address" data-success="Right">Email Id</label>
             </div>
           </div>
         </form>

@@ -23,8 +23,8 @@ class Login extends Component {
         <form className="col s12">
           <div className="row">
             <div className="input-field col s8">
-              <input ref={input => this.emailId = input} type="text" className="validate" />
-              <label>Email id</label>
+              <input ref={input => this.emailId = input} type="email" className="validate" />
+              <label data-error="Enter a valid email address address" data-success="Right">Email id</label>
             </div>
           </div>
           <div className="row">
