@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css';
 import '../../assets/styles/main.css';
 
 class Navbar extends Component {
+  renderUser() {
+    if(this.props.loginUser.isAdmin) {
+      return (
+        <li>
+          <Link to={`/users`} className="nav-button">Users</Link>
+        </li>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return (
       <nav>
@@ -12,9 +25,7 @@ class Navbar extends Component {
             <li>
               <Link to={`/patients`} className="nav-button">Patients</Link>
             </li>
-            <li>
-              <Link to={`/users`} className="nav-button">Users</Link>
-            </li>
+            { this.renderUser() }
             <li>
               <Link to={`/thalassemia_registry`} className="nav-button">Logout</Link>
             </li>
@@ -25,4 +36,10 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    loginUser: state.users
+  }
+}
+
+export default connect(mapStateToProps, null)(Navbar);
