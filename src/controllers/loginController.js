@@ -20,6 +20,7 @@ exports.validUserCheck = (req, res) => {
         getAll(user.emailId, (patients) => {
           if (patients) {
             const userPatients = {
+              loginUser: user,
               userToken: token,
               isAdmin: user.isAdmin,
               patients: patients

@@ -4,5 +4,6 @@ export const ADMIN_ADDED = 'ADMIN_ADDED';
 export const HOSPITAL_ADDED = 'HOSPITAL_ADDED';
 export const USER_PASSWORD_ADDED = 'USER_PASSWORD_ADDED';
 export const LOGIN_RESPONSE = 'LOGIN_RESPONSE';
+export const LOGIN_USER = 'LOGIN_USER';
 export const USERS_AVAILABLE = 'USERS_AVAILABLE';
 export const USER_ADDED = 'USER_ADDED';
