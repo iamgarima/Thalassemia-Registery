@@ -7,6 +7,14 @@ body {
   background-color: #F7F7F7;
 }
 
+.outer-image-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/b3.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 nav {
   background-color: #000099!important;
 }
@@ -128,11 +136,41 @@ form div.row {
   color: #000099!important;
 }
 
+.active-container {
+  width: 25%;
+  height: 250px;
+  position: absolute;
+  top: 30%; 
+  left: 68%;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.active-container h5 {
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.active-container p {
+  margin: 20px;
+  border-radius: 4px;
+  font-size: 20px;
+  padding: 5px 10px;
+  color: #000099;
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
 
+input[type=text].valid, input[type=password].valid, input[type=email].valid {
+  border-bottom: 1px solid #000099!important;
+  box-shadow: 0 1px 0 0 #000099!important;
+}
 
-
+.btn:focus {
+  background-color: #000099!important;
+}
 
 
 
