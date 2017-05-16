@@ -4,7 +4,7 @@ function Patient(patientDetails) {
 	this.userEmailId = patientDetails.userEmailId;
 	this.fullName = patientDetails.fullName;
 	this.dob = patientDetails.dob;
-	this.diseaseType = patientDetails.diseaseType;
+	this.bloodType = patientDetails.bloodType;
 }
 
 const insert = (patient, cb) => {

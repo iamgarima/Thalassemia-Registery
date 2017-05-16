@@ -20,9 +20,9 @@ class PatientList extends Component {
             <li className="col s1">{patient.id}</li>
             <li className="col s5">{patient.fullName}</li>
             <li className="col s4">{patient.dob}</li>
-            <li className="col s2">{patient.diseaseType}</li>
-          </ul>  
-        </div> 
+            <li className="col s2">{patient.bloodType}</li>
+          </ul>
+        </div>
       )
     })
   }
@@ -40,14 +40,14 @@ class PatientList extends Component {
                   <li className="col s1"></li>
                   <li className="col s5">Name</li>
                   <li className="col s4">D.O.B</li>
-                  <li className="col s2">Type</li>
+                  <li className="col s2">Blood Type</li>
                 </ul>
-              </div>  
-              { this.renderPatients() }    
+              </div>
+              { this.renderPatients() }
             </div>
-          </div>  
+          </div>
         </div>
-      </div>    
+      </div>
     )
   }
 }

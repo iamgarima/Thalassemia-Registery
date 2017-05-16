@@ -11,7 +11,7 @@ export default (sequelize) => {
   	dob: {
   		type: Sequelize.STRING
   	},
-  	diseaseType: {
+  	bloodType: {
   		type: Sequelize.STRING
   	}
 	});

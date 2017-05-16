@@ -11,7 +11,7 @@ class AddPatientForm extends Component {
     const patient = {
       fullName: this.fullName.value,
       dob: this.dob.value,
-      diseaseType: this.diseaseType.value
+      bloodType: this.bloodType.value
     };
     emptyFieldCheck(patient) ? this.props.addPatient(patient) : alert("Invalid input!!");
   }
@@ -37,8 +37,8 @@ class AddPatientForm extends Component {
           </div>
           <div className="row">
             <div className="input-field col s8">
-              <input ref={input => this.diseaseType = input} type="text" className="validate" />
-              <label>Disease Type</label>
+              <input ref={input => this.bloodType = input} type="text" className="validate" />
+              <label>Blood Type</label>
             </div>
           </div>
         </form>
