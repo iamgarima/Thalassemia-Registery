@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { addHospital } from '../actions/hospitals';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class Hospital extends Component {
   handleClick() {
@@ -12,7 +13,7 @@ class Hospital extends Component {
       name: this.name.value,
       location: this.location.value
     };
-    this.props.addHospital(hospital);
+    emptyFieldCheck(hospital) ? this.props.addHospital(hospital) : alert("Invalid input!!");
   }
 
   render() {

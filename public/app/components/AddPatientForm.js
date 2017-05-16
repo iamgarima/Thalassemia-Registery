@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { addPatient } from '../actions/patients';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class AddPatientForm extends Component {
   handleClick() {
@@ -12,7 +13,7 @@ class AddPatientForm extends Component {
       dob: this.dob.value,
       diseaseType: this.diseaseType.value
     };
-    this.props.addPatient(patient);
+    emptyFieldCheck(patient) ? this.props.addPatient(patient) : alert("Invalid input!!");
   }
 
   render() {

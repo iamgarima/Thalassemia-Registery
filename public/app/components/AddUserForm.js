@@ -4,13 +4,14 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { addUser } from '../actions/users';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class AddUserForm extends Component {
   handleClick() {
     const user = {
       emailId: this.emailId.value,
     };
-    this.props.addUser(user);
+    emptyFieldCheck(user) ? this.props.addUser(user) : alert("Invalid input!!");
   }
 
   render() {

@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { setUser } from '../actions/users';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class Join extends Component {
   handleClick() {
@@ -12,7 +13,7 @@ class Join extends Component {
         emailId: this.emailId.value,
         password: this.password.value
       }
-      this.props.setUser(user);
+      emptyFieldCheck(user) ? this.props.setUser(user) : alert("Invalid input!!");
     } else {
       alert('Passwords don\'t match!');
     }

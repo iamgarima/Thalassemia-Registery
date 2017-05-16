@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { loginUser } from '../actions/login';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class Login extends Component {
   handleClick() {
@@ -11,7 +12,7 @@ class Login extends Component {
       emailId: this.emailId.value,
       password: this.password.value
     };
-    this.props.loginUser(user);
+    emptyFieldCheck(user) ? this.props.loginUser(user) : alert("Invalid input!!");
   }
 
   render() {
@@ -24,7 +25,7 @@ class Login extends Component {
           <div className="row">
             <div className="input-field col s8">
               <input ref={input => this.emailId = input} type="email" className="validate" />
-              <label data-error="Enter a valid email address address" data-success="Right">Email id</label>
+              <label data-error="Enter a valid email address" data-success="Right">Email id</label>
             </div>
           </div>
           <div className="row">

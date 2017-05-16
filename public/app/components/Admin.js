@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css';
 import 'materialize-css/bin/materialize.js';
 import '../../assets/styles/main.css';
 import { addAdmin } from '../actions/admins';
+import { emptyFieldCheck } from '../../../dist/validations.js';
 
 class Admin extends Component {
   handleClick() {
@@ -12,7 +13,7 @@ class Admin extends Component {
         emailId: this.emailId.value,
         password: this.password.value
       };
-      this.props.addAdmin(admin);
+      emptyFieldCheck(admin) ? this.props.addAdmin(admin) : alert("Invalid input!!");
     } else {
       alert('Passwords don\'t match!');
     }
